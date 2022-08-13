@@ -1,0 +1,11 @@
+### obtener todos los productos mediante texto
+GET http://localhost:3001/api/items?q=iphone  HTTP/1.1
+
+### Objeto encontrado
+GET http://localhost:3001/api/items/MLA836748726 HTTP/1.1
+
+### identificador debe ser un numero
+GET http://localhost:3001/api/items/null  HTTP/1.1
+
+### No encontrado
+GET http://localhost:3001/api/items/1 HTTP/1.1
