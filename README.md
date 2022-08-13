@@ -33,10 +33,10 @@
 ## End points de prueba
 
 - Obtener todos los productos mediante texto
- - GET http://localhost:3001/api/items?q=text  HTTP/1.1
+   - GET http://localhost:3001/api/items?q=text  HTTP/1.1
 
 - Obtener producto mediante id
- - GET http://localhost:3001/api/items/:id HTTP/1.1
+   - GET http://localhost:3001/api/items/:id HTTP/1.1
 
 
 ## Autores del proyecto
