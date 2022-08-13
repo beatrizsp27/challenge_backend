@@ -13,7 +13,6 @@
 
 - Node JS (versión v14.15.4)
 - npm (versión 6.14.10)
-- java (versión 1.8.0_231) ó OpenJDK8 [LTS] OpenJ9
 - Visual Studio Code (versión: 1.45.1)
 - Sistema operativo en MacBook o Mac: macOS Big Sur 11.6.1
 
