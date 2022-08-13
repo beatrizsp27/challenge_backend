@@ -1,4 +1,4 @@
-# Aplicación Seguros Centauro para Clientes
+# Aplicación Challengue backend
 
 ## Índice de contenido
 
@@ -22,9 +22,9 @@
 - challengue_backend
     -	**service** (Clases de llamadas y consultas de Servicios REST)
     -	**utilerias** (Constantes, valores, propiedades que serán utilizados en cualquier parte del código fuente)
-    -	**request** (Archivos de pruebas de api (Para ejecutarlo es necesario tener visual studio code y REST Client
+    -	**request** (Archivos de pruebas de api (Para ejecutarlo es necesario tener visual studio code y REST Client  v0.25.0 instalado))
     -   **index** (archivo que contiene las estructura de las Apis)
-v0.25.0 instalado))
+
 
 ## Despliegue de proyecto
 
