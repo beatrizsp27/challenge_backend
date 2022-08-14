@@ -107,7 +107,7 @@ export const getdescriptiosByIdProduct = async (id) =>{
             .then(response => { return response.json(); })
             .then(productResponse => {
                 const newProduct = {
-                    description:productResponse.plaxin_text
+                    description:productResponse.plain_text
                 };
                 resolve(newProduct);
             })
