@@ -38,6 +38,12 @@
 - Obtener producto mediante id
    - GET http://localhost:3001/api/items/:id HTTP/1.1
 
+## Ejecución de pruebas unitarias
+
+- Para ejecutar las pruebas se debera ejecutar el siguiente comando.
+  - `npm run test` para obtener el menu de opciones de pruebas.
+
+
 
 ## Autores del proyecto
 
