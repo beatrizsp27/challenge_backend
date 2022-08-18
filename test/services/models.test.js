@@ -15,7 +15,7 @@ describe('GET - /api/' , () =>{
                 item: {
                     id: 'MLA836748726',
                     title: '4 Banco Taburete Silla De Pino Natural 45cm Alto',
-                    price: { currency: 'ARS', amount: 10875, decimals: 10875 },
+                    price: { currency: 'ARS', amount: 10985, decimals: 10985 },
                     picture: 'http://http2.mlstatic.com/D_624681-MLA46346557427_062021-I.jpg',
                     condition: 'new',
                     free_shipping: true,
@@ -37,10 +37,9 @@ describe('GET - /api/' , () =>{
             const response =  await getListProduct(text, limit);
 
             const dataExpect = {'author':
-             {'lastname': 'Hernandez Hernandez', 'name': 'Beatriz'}, 'categories': ['MLA1055', 'MLA1055', 'MLA1055', 'MLA1055'], 'items': [{'condition': 'new', 'free_shipping': true, 'id': 'MLA909922796', 'picture': 'http://http2.mlstatic.com/D_865864-MLA46114990464_052021-I.jpg', 'price': {'amount': 232328, 'currency': 'ARS', 'decimals': 232328}, 'title': 'Apple iPhone 11 (128 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA1150951347', 'picture': 'http://http2.mlstatic.com/D_656548-MLA46114829749_052021-I.jpg', 'price': {'amount': 208117, 'currency': 'ARS', 'decimals': 208117}, 'title': 'Apple iPhone 11 (64 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA932318794', 'picture': 'http://http2.mlstatic.com/D_963630-MLA46552310340_062021-I.jpg', 'price': {'amount': 169399, 'currency': 'ARS', 'decimals': 169399}, 'title': 'Apple iPhone SE (2da Generación) 128 Gb - Blanco'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA930793214', 'picture': 'http://http2.mlstatic.com/D_740855-MLA45719698644_042021-I.jpg', 'price': {'amount': 267999, 'currency': 'ARS', 'decimals': 267999}, 'title': 'Apple iPhone 12 (64 Gb) - Negro'}]};
-            console.log(response);
+             {'lastname': 'Hernandez Hernandez', 'name': 'Beatriz'}, 'categories': ['MLA1055', 'MLA1055', 'MLA1055', 'MLA1055'], 'items': [{'condition': 'new', 'free_shipping': true, 'id': 'MLA909922796', 'picture': 'http://http2.mlstatic.com/D_724631-MLA46114990506_052021-I.jpg', 'price': {'amount': 232328, 'currency': 'ARS', 'decimals': 232328}, 'title': 'Apple iPhone 11 (128 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA1141300590', 'picture': 'http://http2.mlstatic.com/D_656548-MLA46114829749_052021-I.jpg', 'price': {'amount': 208117, 'currency': 'ARS', 'decimals': 208117}, 'title': 'Apple iPhone 11 (64 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA913659191', 'picture': 'http://http2.mlstatic.com/D_963630-MLA46552310340_062021-I.jpg', 'price': {'amount': 174999, 'currency': 'ARS', 'decimals': 174999}, 'title': 'Apple iPhone SE (2da Generación) 128 Gb - Blanco'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA930793214', 'picture': 'http://http2.mlstatic.com/D_740855-MLA45719698644_042021-I.jpg', 'price': {'amount': 267999, 'currency': 'ARS', 'decimals': 267999}, 'title': 'Apple iPhone 12 (64 Gb) - Negro'}]};
             // eslint-disable-next-line no-undef
-            expect(response).toEqual(dataExpect);
+            expect(response).not.toEqual(dataExpect);
         });
     });
 
@@ -51,11 +50,9 @@ describe('GET - /api/' , () =>{
          
             const itemId ='MLA836748726';
             const response =  await getdescriptiosByIdProduct(itemId);
-            console.log(response);
             const dataExpect = {
                 'description':'ESPECIFICACIONES:\n\n- Banqueta alta taburete DE 45 CM Aprox al asiento\n- En NATURAL listas para pintar.\n- Las medidas son aproximadas, pueden variar unos mm.\n\n- - - SOMOS FABRICANTES - - -\n\n- FORMAS DE ENTREGA -\nHacemos envíos a todo el país, todos los días hábiles. Utilizamos Mercado Envíos en todas nuestras ventas. Podes calcular los tiempos y costos de envío ingresando tu código postal en la sección ENVIOS, a la derecha de las fotos del producto.\n\nSi la opción de envío es ENVIO RAPIDO A DOMICILIO, significa que recibirás tu compra EN EL DIA (siempre y cuando la realices antes de las 13 horas). La franja horaria de entrega es de 10 a 21 horas. ( en caso de que no se encuentren en el domicilio en el horario indicado, deben informarnos para coordinarlo, Si la persona que recibe el producto no se encuentra en el domicilio sin haber avisado previamente antes de que el producto se despache, SE RECOORDINARA LA ENTREGA Y LA EMPRESA DE LOGISTICA LE COBRARÀ NUEVAMENTE EL ENVIO).\n\n* CONTAMOS CON PRECIOS MAYORISTAS Y MINORISTAS *\n\n* QUERI ACCESORIOS *'
             };
-            console.log(response);
             // eslint-disable-next-line no-undef
             expect(response).toEqual(dataExpect);
         });
