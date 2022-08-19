@@ -36,9 +36,7 @@ appExpress.get('/', (request, response) =>{
 
 /**OBTENER TODOS LOS PRODUCTO */
 appExpress.get('/api/items', async (request, response) =>{
-    console.log('obteniendo productos');
     let text = request.query.q;
-    console.log(text);
     const limit = 4;
     /**validaciones */
     if(text=== null || text === 'null'){

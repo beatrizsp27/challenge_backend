@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import fetch from 'node-fetch';
 import { BASE_URL, CONTEXTO_SEARCH, CONTEXT_PRODUCT, CONTEXT_DESCRIPTIONS} from '../utils/index.js';
 
@@ -20,31 +21,69 @@ export const getListProduct = async (textSearch, limit) =>{
         })
             .then(response => { return response.json(); })
             .then(responseJson => {
-                let arrayProductTemp = [];
-                let category = [];
-                responseJson.results.forEach(product => {
-                    if(product){
-                        const newProduct = {
-                            id:product.id,
-                            title:product.title,
-                            price:{
-                                currency:product.currency_id,
-                                amount:product.price,
-                                decimals:product.price
-                            },
-                            picture:product.thumbnail,
-                            condition:product.condition,
-                            free_shipping:product?.shipping?.free_shipping
-                        };
-                        category.push(product.category_id);
-                        arrayProductTemp.push(newProduct);
+                /**Se valida que el objeto sea difernete de null */
+                if(responseJson){
+                    /**variables */
+                    let arrayProductTemp = [];
+                    let  categoriaNameArray = [];
+                    let categorias = [];
+
+                    /**SE VALIDA QUE EL ARRAT DE FILTROS DISPONIBLES SEAN MAYORES A 0 */
+                    if(responseJson.available_filters && responseJson.available_filters.length > 0){
+                        /**SE BUSCAN LAS CATEGORIAS EN LOS FILTROS DISPONIBLES */
+                        categorias = responseJson.available_filters.filter((filter)=>(filter.id === 'category'));
+                        /**En caso se no ecnontralo se realiza la busqueda en los filtros */
+                        if(categorias.length===0 && responseJson.filters && responseJson.filters.length > 0){
+                            categorias = responseJson.filters.filter((filter)=>(filter.id === 'category'));
+                        }
+                    }else{
+                        /**En caso se no ecnontralo se realiza la busqueda en los filtros */
+                        categorias = responseJson.filters.filter((filter)=>(filter.id === 'category'));
                     }
-                });
-                const objResponse = { ...dataObject, categories:category, items: arrayProductTemp };
-                resolve(objResponse);
+                    /**SE VALIDA QUE EL ARRAY OBTENIDO CONTENGA VALORES */
+                    if(categorias && categorias.length > 0){
+                        categoriaNameArray = categorias[0].values.map((categoriaItem)=>{
+                            /**SE VALIDA QUE SE ENCUNTRE EL ELEMTO */
+                            if(categoriaItem.path_from_root && categoriaItem.path_from_root.length >0){
+                                return categoriaItem.path_from_root.map((cat)=>{
+                                    if(cat && cat.name){
+                                        return cat.name;
+                                    }
+                                });
+                            }else{
+                                if(categoriaItem && categoriaItem.name){
+                                    return  categoriaItem.name;
+                                }
+                            }
+                            return null;
+                      });
+                    }
+                    /**SE ARMA EL OBJETO */
+                    responseJson.results.forEach(product => {
+                        if(product){
+                            const newProduct = {
+                                id:product.id,
+                                title:product.title,
+                                price:{
+                                    currency:product.currency_id,
+                                    amount:product.price,
+                                    decimals:product.price
+                                },
+                                picture:product.thumbnail,
+                                condition:product.condition,
+                                free_shipping:product?.shipping?.free_shipping
+                            };
+                            arrayProductTemp.push(newProduct);
+                        }
+                    });
+                    const objResponse = { ...dataObject, categories: categoriaNameArray.length==1 ? categoriaNameArray[0] : categoriaNameArray, items: arrayProductTemp };
+                    resolve(objResponse);
+
+                }else{
+                    resolve({...dataObject});
+                }
             })
             .catch(function (error) {
-                console.log('Request failed', error);
                 reject(error);
             });
     });
@@ -87,7 +126,6 @@ export const getProductByIdProduct = async (id) =>{
 
             })
             .catch(function (error) {
-                console.log('Request failed', error);
                 reject(error);
             });
     });
@@ -112,7 +150,6 @@ export const getdescriptiosByIdProduct = async (id) =>{
                 resolve(newProduct);
             })
             .catch(function (error) {
-                console.log('Request failed', error);
                 reject(error);
             });
     });
