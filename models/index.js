@@ -11,7 +11,18 @@ const dataObject = {
 
 export const getListProduct = async (textSearch, limit) =>{
     const promise = await new Promise((resolve, reject)=>{
-        fetch(`${BASE_URL}${CONTEXTO_SEARCH}?q=${textSearch}&limit=${limit}`, {
+        let url = `${BASE_URL}${CONTEXTO_SEARCH}?q=:query`;  
+        if(textSearch && limit){
+            url = `${BASE_URL}${CONTEXTO_SEARCH}?q=${textSearch}&limit=${limit}`;
+        }
+        if(textSearch){
+            url = `${BASE_URL}${CONTEXTO_SEARCH}?q=${textSearch}`;
+        }
+        if(limit){
+            url = `${url}&limit=${limit}`;
+        }
+        console.log(url);
+        fetch(url, {
             method: 'GET',
             headers:
           {

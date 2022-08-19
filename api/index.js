@@ -37,15 +37,9 @@ appExpress.get('/', (request, response) =>{
 /**OBTENER TODOS LOS PRODUCTO */
 appExpress.get('/api/items', async (request, response) =>{
     let text = request.query.q;
-    const limit = 4;
-    /**validaciones */
-    if(text=== null || text === 'null'){
-        return response.status(400).json({
-            title: 'Error',
-            error: 'El texto de busqueda no puede ser nullo'
-        });
-    }
-
+    let limit = request.query.limit;
+    console.log('limit-------' + limit);
+    console.log('limit-------' + text);
     await getListProduct(text, limit).then(dataResponse =>{
         response.json({
             success: true,

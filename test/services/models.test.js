@@ -35,9 +35,69 @@ describe('GET - /api/' , () =>{
             const text ='iphone';
             const limit = 4;
             const response =  await getListProduct(text, limit);
-
-            const dataExpect = {'author':
-             {'lastname': 'Hernandez Hernandez', 'name': 'Beatriz'}, 'categories': ['MLA1055', 'MLA1055', 'MLA1055', 'MLA1055'], 'items': [{'condition': 'new', 'free_shipping': true, 'id': 'MLA909922796', 'picture': 'http://http2.mlstatic.com/D_724631-MLA46114990506_052021-I.jpg', 'price': {'amount': 232328, 'currency': 'ARS', 'decimals': 232328}, 'title': 'Apple iPhone 11 (128 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA1141300590', 'picture': 'http://http2.mlstatic.com/D_656548-MLA46114829749_052021-I.jpg', 'price': {'amount': 208117, 'currency': 'ARS', 'decimals': 208117}, 'title': 'Apple iPhone 11 (64 Gb) - Negro'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA913659191', 'picture': 'http://http2.mlstatic.com/D_963630-MLA46552310340_062021-I.jpg', 'price': {'amount': 174999, 'currency': 'ARS', 'decimals': 174999}, 'title': 'Apple iPhone SE (2da Generación) 128 Gb - Blanco'}, {'condition': 'new', 'free_shipping': true, 'id': 'MLA930793214', 'picture': 'http://http2.mlstatic.com/D_740855-MLA45719698644_042021-I.jpg', 'price': {'amount': 267999, 'currency': 'ARS', 'decimals': 267999}, 'title': 'Apple iPhone 12 (64 Gb) - Negro'}]};
+            const dataExpect = {
+                'success': true,
+                'data': {
+                    'author': {
+                        'name': 'Beatriz',
+                        'lastname': 'Hernandez Hernandez'
+                    },
+                    'categories': [
+                        'Celulares y Teléfonos',
+                        'Celulares y Smartphones'
+                    ],
+                    'items': [
+                        {
+                            'id': 'MLA1150951347',
+                            'title': 'Apple iPhone 11 (64 Gb) - Negro',
+                            'price': {
+                                'currency': 'ARS',
+                                'amount': 208999,
+                                'decimals': 208999
+                            },
+                            'picture': 'http://http2.mlstatic.com/D_656548-MLA46114829749_052021-I.jpg',
+                            'condition': 'new',
+                            'free_shipping': true
+                        },
+                        {
+                            'id': 'MLA1141300590',
+                            'title': 'Apple iPhone 11 (128 Gb) - (product)red',
+                            'price': {
+                                'currency': 'ARS',
+                                'amount': 233761,
+                                'decimals': 233761
+                            },
+                            'picture': 'http://http2.mlstatic.com/D_724631-MLA46114990506_052021-I.jpg',
+                            'condition': 'new',
+                            'free_shipping': true
+                        },
+                        {
+                            'id': 'MLA932318794',
+                            'title': 'Apple iPhone SE (2da Generación) 128 Gb - Blanco',
+                            'price': {
+                                'currency': 'ARS',
+                                'amount': 173266,
+                                'decimals': 173266
+                            },
+                            'picture': 'http://http2.mlstatic.com/D_963630-MLA46552310340_062021-I.jpg',
+                            'condition': 'new',
+                            'free_shipping': true
+                        },
+                        {
+                            'id': 'MLA930793214',
+                            'title': 'Apple iPhone 12 (64 Gb) - Negro',
+                            'price': {
+                                'currency': 'ARS',
+                                'amount': 267999,
+                                'decimals': 267999
+                            },
+                            'picture': 'http://http2.mlstatic.com/D_740855-MLA45719698644_042021-I.jpg',
+                            'condition': 'new',
+                            'free_shipping': true
+                        }
+                    ]
+                }
+            };
             // eslint-disable-next-line no-undef
             expect(response).not.toEqual(dataExpect);
         });
