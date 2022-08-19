@@ -29,8 +29,9 @@
 
 ## Despliegue de proyecto
 
-- Es necesario tener instalado nodejs en la computadora donde se ejecutara el proyecto
-- Se debe ejecutar el comando `npm run start` o `npm run dev` a nivel root del proyecto
+- Es necesario tener instalado nodejs en la computadora donde se ejecutara el proyecto.
+    - 1.- Ejecutar `npm install` para instalar los componentes requeridos.
+    - 2.- después ejecutar `npm run start` o `npm run dev` a nivel root del proyecto para iniciar el servidor.
 
 ## End points de prueba
 
