@@ -11,7 +11,7 @@
 
 ## Requisitos: Tecnologías / IDES / Sistemas Operativos
 
-- Node JS (versión v14.15.4)
+- Node JS (versión 14.15.4)
 - npm (versión 6.14.10)
 - Visual Studio Code (versión: 1.45.1)
 - Sistema operativo en MacBook o Mac: macOS Big Sur 11.6.1
@@ -19,10 +19,12 @@
 ## Estructura de carpetas del proyecto
 
 - challengue_backend
+    -	**model** (Clases donde se consulta los servicios)
     -	**service** (Clases de llamadas y consultas de Servicios REST)
+    -	**test** (Contiene pruebas unitarias)
     -	**utilerias** (Constantes, valores, propiedades que serán utilizados en cualquier parte del código fuente)
-    -	**request** (Archivos de pruebas de api (Para ejecutarlo es necesario tener visual studio code y REST Client  v0.25.0 instalado))
-    -   **index** (archivo que contiene las estructura de las Apis)
+    -	**request** (Archivos de pruebas de API (Para ejecutarlo es necesario tener visual studio code y REST Client v0.25.0 instalado)
+    -   **index** (archivo que contiene las estructura de las APIS)
 
 
 ## Despliegue de proyecto
@@ -47,5 +49,5 @@
 
 ## Autores del proyecto
 
-- Beatriz Herández Hernández - Desarrollador Front end
+- Beatriz Herández Hernández - Desarrollador FrontEnd
  
