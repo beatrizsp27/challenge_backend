@@ -21,9 +21,6 @@ export const getListProduct = async (textSearch, limit) =>{
         if(limit){
             url = `${url}&limit=${limit}`;
         }
-        console.log(textSearch);
-        console.log(limit);
-        console.log(url);
         fetch(url, {
             method: 'GET',
             headers:

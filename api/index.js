@@ -38,8 +38,6 @@ appExpress.get('/', (request, response) =>{
 appExpress.get('/api/items', async (request, response) =>{
     let text = request.query.q;
     let limit = request.query.limit;
-    console.log('text-------' + limit);
-    console.log('limit-------' + text);
     await getListProduct(text, limit).then(dataResponse =>{
         response.json({
             success: true,

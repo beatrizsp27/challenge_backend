@@ -1,27 +1,44 @@
 import appExpress from '../api/index.js';
 import request from 'supertest';
 
-
-// eslint-disable-next-line no-undef
+/**PRUEBAS UNITARIAS DE LAS APIS */
 describe('GET - /api/' , () =>{  
-    // eslint-disable-next-line no-undef
+
+    /**TEST DEL API DE RECUPERACION DE PRODUCTO MEDIANTE ID */
     describe('GET - /api/items busqueda mediante id' , () =>{  
-        // eslint-disable-next-line no-undef
         test('Deberia recuperar la informacion', async ()=>{
             const itemId ='MLA836748726';
             const response =  await request(appExpress).get(`/api/items/${itemId}`).send();
-            // eslint-disable-next-line no-undef
             expect(response.statusCode).toBe(200);
+        });
+
+        test('Deberia recuperar la informacion', async ()=>{
+            const itemId = null;
+            const response =  await request(appExpress).get(`/api/items/${itemId}`).send();
+            expect(response.statusCode).toBe(400);
         });
     });
 
-    // eslint-disable-next-line no-undef
+    /**TEST DEL API DE RECUPERACION DE LISTA DE ARCHIVOS */
     describe('GET - /api/items - search ' , () =>{  
-        // eslint-disable-next-line no-undef
-        test('Deberia recuperar la informacion', async ()=>{
+        test('Deberia recuperar la informacion solo con el texto', async ()=>{
             const text ='iphone';
             const response =  await request(appExpress).get(`/api/items/?q=${text}`).send();
-            // eslint-disable-next-line no-undef
+            expect(response.statusCode).toBe(200);
+        });
+        test('Deberia recuperar la informacion solo con el limite', async ()=>{
+            const limit =4;
+            const response =  await request(appExpress).get(`/api/items/?limit=${limit}`).send();
+            expect(response.statusCode).toBe(200);
+        });
+        test('Deberia recuperar la informacion con el limite y el texto', async ()=>{
+            const limit =4;
+            const text ='iphone';
+            const response =  await request(appExpress).get(`/api/items/?q=${text}&limit=${limit}`).send();
+            expect(response.statusCode).toBe(200);
+        });
+        test('Deberia recuperar la informacion sin parametros', async ()=>{
+            const response =  await request(appExpress).get('/api/items').send();
             expect(response.statusCode).toBe(200);
         });
     });
