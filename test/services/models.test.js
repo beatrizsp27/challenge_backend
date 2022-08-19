@@ -1,9 +1,8 @@
-// eslint-disable-next-line no-unused-vars
 import {getListProduct,getProductByIdProduct, getdescriptiosByIdProduct } from '../../models/index.js';
 
-// eslint-disable-next-line no-undef
 describe('GET - /api/' , () =>{  
-    // eslint-disable-next-line no-undef
+
+    /**TEST DE PRUEBAS UNITARIAS DEL RECUPERAR INFORMACION POR ID */
     describe('Consulta de servicio para obtener la respuesta esperada id - model api ' , () =>{  
         // eslint-disable-next-line no-undef
         test('Deberia recuperar la informacion', async ()=>{
@@ -28,9 +27,23 @@ describe('GET - /api/' , () =>{
         });
     });
 
-    // eslint-disable-next-line no-undef
-    describe('Searh moder para realizar la busqueda de produto mediante id ' , () =>{  
-        // eslint-disable-next-line no-undef
+    /**TEST DE PRUEBAS UNITARIAS DEL RECUPERAR DESCRIPCION */
+    describe('recuperar producto mediante id para obtener la descripción ' , () =>{  
+        test('Deberia recuperar la informacion', async ()=>{
+         
+            const itemId ='MLA836748726';
+            const response =  await getdescriptiosByIdProduct(itemId);
+            const dataExpect = {
+                'description':'ESPECIFICACIONES:\n\n- Banqueta alta taburete DE 45 CM Aprox al asiento\n- En NATURAL listas para pintar.\n- Las medidas son aproximadas, pueden variar unos mm.\n\n- - - SOMOS FABRICANTES - - -\n\n- FORMAS DE ENTREGA -\nHacemos envíos a todo el país, todos los días hábiles. Utilizamos Mercado Envíos en todas nuestras ventas. Podes calcular los tiempos y costos de envío ingresando tu código postal en la sección ENVIOS, a la derecha de las fotos del producto.\n\nSi la opción de envío es ENVIO RAPIDO A DOMICILIO, significa que recibirás tu compra EN EL DIA (siempre y cuando la realices antes de las 13 horas). La franja horaria de entrega es de 10 a 21 horas. ( en caso de que no se encuentren en el domicilio en el horario indicado, deben informarnos para coordinarlo, Si la persona que recibe el producto no se encuentra en el domicilio sin haber avisado previamente antes de que el producto se despache, SE RECOORDINARA LA ENTREGA Y LA EMPRESA DE LOGISTICA LE COBRARÀ NUEVAMENTE EL ENVIO).\n\n* CONTAMOS CON PRECIOS MAYORISTAS Y MINORISTAS *\n\n* QUERI ACCESORIOS *'
+            };
+            // eslint-disable-next-line no-undef
+            expect(response).toEqual(dataExpect);
+        });
+    });
+
+
+    /**TEST DE PRUEBAS UNITARIAS DEL RECUPERAR LISTADO DE PRODCUTOS */
+    describe('Searh moder para realizar la busqueda de listado de prodcutos' , () =>{  
         test('Deberia recuperar la informacion', async ()=>{
             const text ='iphone';
             const limit = 4;
@@ -101,21 +114,32 @@ describe('GET - /api/' , () =>{
             // eslint-disable-next-line no-undef
             expect(response).not.toEqual(dataExpect);
         });
-    });
 
-    // eslint-disable-next-line no-undef
-    describe('recuperar producto mediante id para obtener la descripción ' , () =>{  
-        // eslint-disable-next-line no-undef
-        test('Deberia recuperar la informacion', async ()=>{
-         
-            const itemId ='MLA836748726';
-            const response =  await getdescriptiosByIdProduct(itemId);
-            const dataExpect = {
-                'description':'ESPECIFICACIONES:\n\n- Banqueta alta taburete DE 45 CM Aprox al asiento\n- En NATURAL listas para pintar.\n- Las medidas son aproximadas, pueden variar unos mm.\n\n- - - SOMOS FABRICANTES - - -\n\n- FORMAS DE ENTREGA -\nHacemos envíos a todo el país, todos los días hábiles. Utilizamos Mercado Envíos en todas nuestras ventas. Podes calcular los tiempos y costos de envío ingresando tu código postal en la sección ENVIOS, a la derecha de las fotos del producto.\n\nSi la opción de envío es ENVIO RAPIDO A DOMICILIO, significa que recibirás tu compra EN EL DIA (siempre y cuando la realices antes de las 13 horas). La franja horaria de entrega es de 10 a 21 horas. ( en caso de que no se encuentren en el domicilio en el horario indicado, deben informarnos para coordinarlo, Si la persona que recibe el producto no se encuentra en el domicilio sin haber avisado previamente antes de que el producto se despache, SE RECOORDINARA LA ENTREGA Y LA EMPRESA DE LOGISTICA LE COBRARÀ NUEVAMENTE EL ENVIO).\n\n* CONTAMOS CON PRECIOS MAYORISTAS Y MINORISTAS *\n\n* QUERI ACCESORIOS *'
-            };
-            // eslint-disable-next-line no-undef
-            expect(response).toEqual(dataExpect);
+        test('Deberia recuperar la informacion solo con el texto', async ()=>{
+            const text ='iphone';
+            const limit = null;
+            const response =  await getListProduct(text, limit);
+           
+            expect(response).toEqual(response);
         });
+
+        test('Deberia recuperar la informacion solo con el limite con 4 elemetos', async ()=>{
+            const text =null;
+            const limit = 4;
+            const response =  await getListProduct(text, limit);
+           
+            expect(response).toEqual(response);
+        });
+
+        test('Deberia recuperar la informacion sin datos', async ()=>{
+            const text =null;
+            const limit = null;
+            const response =  await getListProduct(text, limit);
+           
+            // eslint-disable-next-line no-undef
+            expect(response).toEqual(response);
+        });
+
     });
 
 });
